@@ -13,13 +13,17 @@ jobs:
       # Checkout the code from your repository
       - name: Checkout code
         uses: actions/checkout@v2
+        
+      - name: Check Docker version
+        run: docker version
+
 
       # Install Docker
-      - name: Install Docker
-        uses: docker/setup-docker@v2
-        with:
-          dockerfile: Dockerfile
-          container-name: my-docker-container
+   #   - name: Install Docker
+    #    uses: docker/setup-docker@v2
+     #   with:
+      #    dockerfile: Dockerfile
+       #   container-name: my-docker-container
 
       # Build the Docker image
       - name: Build Docker image
