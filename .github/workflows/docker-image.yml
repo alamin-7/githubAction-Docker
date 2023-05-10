@@ -31,6 +31,6 @@ jobs:
         
       - name: Write script inside container and output
         run: |
-          docker exec -it apache-container sh -c 'echo "#!/bin/bash" > /usr/local/bin/my-script.sh && echo "echo \"Hello, world!\"" >> /usr/local/bin/my-script.sh && chmod +x /usr/local/bin/my-script.sh' 
-          docker exec -it apache-container cat /usr/local/bin/my-script.sh
+          docker exec apache-container sh -c 'echo "#!/bin/bash" > /usr/local/bin/my-script.sh && echo "echo \"Hello, world!\"" >> /usr/local/bin/my-script.sh && chmod +x /usr/local/bin/my-script.sh' 
+          docker exec apache-container cat /usr/local/bin/my-script.sh
   
