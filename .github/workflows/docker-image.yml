@@ -19,11 +19,11 @@ jobs:
 
       # Build the Docker image
       - name: Build Docker image
-        run: docker build -t apache-image:latest --name apache-container .
+        run: docker build -t apache-image:latest .
 
       # Run the Docker container
       - name: Run Docker container
-        run: docker run -d -p 8080:80 apache-image:latest
+        run: docker run -d -p 8080:80 --name apache-container  apache-image:latest
 
       # Verify that the container is running
       - name: Verify container is running
