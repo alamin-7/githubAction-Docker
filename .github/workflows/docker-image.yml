@@ -17,17 +17,9 @@ jobs:
       - name: Check Docker version
         run: docker version
 
-
-      # Install Docker
-   #   - name: Install Docker
-    #    uses: docker/setup-docker@v2
-     #   with:
-      #    dockerfile: Dockerfile
-       #   container-name: my-docker-container
-
       # Build the Docker image
       - name: Build Docker image
-        run: docker build -t apache-image:latest .
+        run: docker build -t apache-image:latest --name apache-container .
 
       # Run the Docker container
       - name: Run Docker container
@@ -36,3 +28,10 @@ jobs:
       # Verify that the container is running
       - name: Verify container is running
         run: docker ps
+        
+      - name: Write script inside container and output
+        run: |
+          docker exec apache-container sh -c 'echo "echo Hello, world!" > my-script.sh'
+          docker cp apache-conatiner:/my-script.sh .
+          cat my-script.sh
+  
